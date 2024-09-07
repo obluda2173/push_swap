@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 11:13:22 by erian             #+#    #+#             */
-/*   Updated: 2024/09/07 10:08:00 by erian            ###   ########.fr       */
+/*   Updated: 2024/09/07 20:38:29 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ void	stack_init(t_list **stack_a, char **argv)
 	i = 0;
 	while (argv[i])
 	{
+		if (argv_isvalid(argv[i]))
+			error_free(stack_a);
 		nbr = ft_atol(argv[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			error();
-		if (duplicate(argv))
+		if (duplicate(*stack_a, (int)nbr))
 			error();
-		copy_data(stack_a, nbr);
-		argv++;
+		copy_data(stack_a, (int)nbr);
 		i++;
 	}
 }
@@ -34,35 +35,43 @@ void	stack_init(t_list **stack_a, char **argv)
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
-	//t_list	*stack_b;
-	char	**argv_split;
-
-	if ((argc < 2) || (argc == 2 && !argv[1][0]))
-		return (0);
-
-	if (argc == 2)
-	{
-		argv_split = ft_split(argv[1], ' ');
-		argv = argv_split;
-	}
-
-	if (!argv_isvalid(argv + 1))
-	{
-		split_free(argv_split);
-		error();
-	}
+	// t_list	*stack_b;
 
 	stack_a = NULL;
-	//stack_b = NULL;
+	// stack_b = NULL;
 
-	stack_init(&stack_a, argv + 1);
+	if ((argc < 2) || (argc == 2 && !argv[1][0]))
+		return (1);
 
-	while (stack_a)
+	else if (argc == 2)
 	{
-		ft_printf("s", stack_a->value);
-		stack_a = stack_a->next;
+		argv = ft_split(argv[1], ' ');
+		stack_init(&stack_a, argv);
 	}
-	free_stack(stack_a);
-	free_split(argv_split);
+	else if (argc > 2)
+		stack_init(&stack_a, argv + 1);
+
+	// if (!sorted(stack_a))
+	// {
+	// 	//Do the sort in here (depending on the size)
+	// }
+
+/* ############################################################### */
+/* ############################################################### */
+
+	t_list	*temp = stack_a;
+	while (temp)
+    {
+        ft_printf("%d\n", temp->value);
+        temp = temp->next;
+    }
+
+	if (sorted(stack_a))
+		ft_printf("%s", "stack is sorted?");
+
+/* ############################################################### */
+/* ############################################################### */
+
+	free_stack(&stack_a);
 	return (0);
 }

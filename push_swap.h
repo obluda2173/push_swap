@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 11:15:20 by erian             #+#    #+#             */
-/*   Updated: 2024/09/06 19:54:19 by erian            ###   ########.fr       */
+/*   Updated: 2024/09/07 20:16:12 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@
 
 typedef struct s_list
 {
-	int	value;
-	int	distance;
-	struct s_list *next;
-}	t_list;
+	int				value;
+	int				distance;
+	struct s_list	*next;
+}					t_list;
 
-int	main(int argc, char **argv);
+int		main(int argc, char **argv);
 void	stack_init(t_list **stack_a, char **argv);
 void	copy_data(t_list **stack, int nbr);
 void	error(void);
 void	free_stack(t_list **stack);
-void	error_free(t_list **stack_a, t_list **stack_b);
-int	argv_isvalid(char **argv);
-int	duplicate(char **argv);
+void	error_free(t_list **stack_a);
+int		argv_isvalid(char *argv);
+int		duplicate(t_list *argv, int nbr);
+t_list	*find_last_node(t_list *stack);
+int		sorted(t_list *stack);
 
 #endif

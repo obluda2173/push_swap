@@ -6,7 +6,7 @@
 #    By: erian <erian@student.42>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/06 16:05:21 by erian             #+#    #+#              #
-#    Updated: 2024/09/06 20:14:31 by erian            ###   ########.fr        #
+#    Updated: 2024/09/07 20:35:29 by erian            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC			=
 
 OBJS		= 	$(SRC:.c=.o)
 
-CC			= 	gcc
+CC			= 	cc
 
 RM			= 	rm -f
 
@@ -33,10 +33,10 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./ft_printf
-	$(CC) -g $(CFLAGS) -o $(NAME) $(OBJS) ./ft_printf/libftprintf.a
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) ./ft_printf/libftprintf.a
 
 %.o: %.c
-			$(CC) -g $(CFLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(MAKE) clean -C ./ft_printf
