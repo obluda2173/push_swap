@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:38:39 by erian             #+#    #+#             */
-/*   Updated: 2024/09/07 20:14:36 by erian            ###   ########.fr       */
+/*   Updated: 2024/09/08 18:31:00 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,17 @@ void	copy_data(t_list **stack, int nbr)
 		last_node->next = new_node;
 		new_node->next = NULL;
 	}
+}
+
+int	stack_len(t_list *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
 }

@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 16:22:01 by erian             #+#    #+#             */
-/*   Updated: 2024/09/07 21:04:26 by erian            ###   ########.fr       */
+/*   Created: 2024/09/08 11:34:53 by erian             #+#    #+#             */
+/*   Updated: 2024/09/08 12:05:22 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(void)
+void	rotate(t_list **stack)
 {
-	ft_printf("%s", "Error\n");
-	exit (1);
+	t_list	*temp;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
+	temp = *stack;
+	*stack = (*stack)->next;
+	temp->next = NULL;
+	find_last_node(*stack)->next = temp;
 }
 
-void	free_stack(t_list **stack)
+void	ra(t_list **stack_a)
 {
-	t_list	*head;
-
-	while (*stack)
-	{
-		head = ((*stack)->next);
-		free(*stack);
-		*stack = head;
-	}
+	rotate(stack_a);
+	ft_printf("%s", "ra\n");
 }
 
-void	error_free(t_list **stack)
+void	rb(t_list **stack_b)
 {
-	free_stack(stack);
-	error();
+	rotate(stack_b);
+	ft_printf("%s", "rb\n");
 }
 
-void	split_free(char **argv_split)
+void	rr(t_list **stack_a, t_list **stack_b)
 {
-	while (*argv_split)
-		free(*argv_split);
-	free(argv_split);
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_printf("%s", "rr\n");
 }

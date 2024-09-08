@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 11:13:22 by erian             #+#    #+#             */
-/*   Updated: 2024/09/07 20:38:29 by erian            ###   ########.fr       */
+/*   Updated: 2024/09/08 18:35:53 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,32 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		stack_init(&stack_a, argv + 1);
 
-	// if (!sorted(stack_a))
-	// {
-	// 	//Do the sort in here (depending on the size)
-	// }
+	if (!sorted(stack_a))
+	{
+		if (stack_len(stack_a) == 2)
+			sort_2(&stack_a);
+		if (stack_len(stack_a) == 3)
+			sort_3(&stack_a);
+	}
 
 /* ############################################################### */
 /* ############################################################### */
 
-	t_list	*temp = stack_a;
-	while (temp)
-    {
-        ft_printf("%d\n", temp->value);
-        temp = temp->next;
-    }
+	// sa(&stack_a);
 
-	if (sorted(stack_a))
-		ft_printf("%s", "stack is sorted?");
+	// ra(&stack_a);
+
+	// rra(&stack_a);
+
+	// t_list	*temp = stack_a;
+	// while (temp)
+    // {
+    //     ft_printf("%d\n", temp->value);
+    //     temp = temp->next;
+    // }
+
+	// if (sorted(stack_a))
+	// 	ft_printf("%s", "stack is sorted?");
 
 /* ############################################################### */
 /* ############################################################### */

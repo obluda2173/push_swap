@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 16:22:01 by erian             #+#    #+#             */
-/*   Updated: 2024/09/07 21:04:26 by erian            ###   ########.fr       */
+/*   Created: 2024/09/08 10:45:35 by erian             #+#    #+#             */
+/*   Updated: 2024/09/08 17:00:52 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(void)
+void	push(t_list **stack1, t_list **stack2)
 {
-	ft_printf("%s", "Error\n");
-	exit (1);
+	t_list	*temp;
+
+	if (!*stack2)
+		return ;
+	temp = *stack2;
+	*stack2 = temp->next;
+	temp->next = *stack1;
+	*stack1 = temp;
 }
 
-void	free_stack(t_list **stack)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*head;
-
-	while (*stack)
-	{
-		head = ((*stack)->next);
-		free(*stack);
-		*stack = head;
-	}
+	push(stack_a, stack_b);
+	ft_printf("%s", "pa\n");
 }
 
-void	error_free(t_list **stack)
+void	pb(t_list **stack_a, t_list **stack_b)
 {
-	free_stack(stack);
-	error();
-}
-
-void	split_free(char **argv_split)
-{
-	while (*argv_split)
-		free(*argv_split);
-	free(argv_split);
+	push(stack_b, stack_a);
+	ft_printf("%s", "pa\n");
 }

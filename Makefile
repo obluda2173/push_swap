@@ -6,7 +6,7 @@
 #    By: erian <erian@student.42>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/06 16:05:21 by erian             #+#    #+#              #
-#    Updated: 2024/09/07 20:35:29 by erian            ###   ########.fr        #
+#    Updated: 2024/09/08 18:36:35 by erian            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,11 @@ SRC += push_swap.c
 SRC += list.c
 SRC += checker.c
 SRC += error.c
+SRC += swap.c
+SRC += push.c
+SRC += rotate.c
+SRC += reverse_rotate.c
+SRC += little_sort.c
 
 
 all: $(NAME)
