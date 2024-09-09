@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 11:13:22 by erian             #+#    #+#             */
-/*   Updated: 2024/09/09 15:45:21 by erian            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:59:19 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,28 @@ void	stack_init(t_list **stack_a, char **argv)
 	}
 }
 
+void print_stack(t_list *stack)
+{
+    while (stack)
+    {
+        ft_printf("%d ", stack->value);
+        stack = stack->next;
+    }
+    ft_printf("%c", "\n");
+}
+
+void	distribute_sort(t_list **stack_a, t_list **stack_b)
+{
+	if (stack_len(*stack_a) == 2)
+			ra(stack_a);
+		else if (stack_len(*stack_a) == 3)
+			sort_3(stack_a);
+		else if (stack_len(*stack_a) == 4)
+			sort_4(stack_a, stack_b);
+		else if (stack_len(*stack_a) == 5)
+			sort_5(stack_a, stack_b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -44,21 +66,12 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		stack_init(stack_a, argv);
+		stack_init(&stack_a, argv);
 	}
 	else if (argc > 2)
-		stack_init(stack_a, argv + 1);
+		stack_init(&stack_a, argv + 1);
 	if (!sorted(stack_a))
-	{
-		if (stack_len(stack_a) == 2)
-			ra(stack_a);
-		else if (stack_len(stack_a) == 3)
-			sort_3(stack_a);
-		else if (stack_len(stack_a) == 4)
-			sort_4(stack_a, stack_b);
-		else if (stack_len(stack_a) == 5)
-			sort_5(stack_a, stack_b);
-	}
-	free_stack(stack_a);
+		distribute_sort(&stack_a, &stack_b);
+	free_stack(&stack_a);
 	return (0);
 }
