@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 10:45:35 by erian             #+#    #+#             */
-/*   Updated: 2024/09/08 17:00:52 by erian            ###   ########.fr       */
+/*   Updated: 2024/09/09 11:56:30 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	pa(t_list **stack_a, t_list **stack_b)
 void	pb(t_list **stack_a, t_list **stack_b)
 {
 	push(stack_b, stack_a);
-	ft_printf("%s", "pa\n");
+	ft_printf("%s", "pb\n");
 }
