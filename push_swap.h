@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 11:15:20 by erian             #+#    #+#             */
-/*   Updated: 2024/09/09 18:57:12 by erian            ###   ########.fr       */
+/*   Updated: 2024/09/11 18:29:54 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct s_list
 int		main(int argc, char **argv);
 void	stack_init(t_list **stack_a, char **argv);
 void	distribute_sort(t_list **stack_a, t_list **stack_b);
-void 	print_stack(t_list *stack);
+void	print_stack(t_list *stack);
+void	free_split(char **argv);
 /* ************************************************************************** */
 /* list.c                                                                   * */
 /* ************************************************************************** */
@@ -42,7 +43,6 @@ int		stack_len(t_list *stack);
 void	error(void);
 void	free_stack(t_list **stack);
 void	error_free(t_list **stack_a);
-void	split_free(char **argv_split);
 /* ************************************************************************** */
 /* checker.c                                                                * */
 /* ************************************************************************** */
@@ -50,13 +50,19 @@ int		argv_isvalid(char *argv);
 int		duplicate(t_list *argv, int nbr);
 int		sorted(t_list *stack);
 /* ************************************************************************** */
-/* little_sort.c                                                            * */
+/* distance.c                                                               * */
+/* ************************************************************************** */
+void	distance(t_list **stack_a);
+/* ************************************************************************** */
+/* sorting                                                                  * */
 /* ************************************************************************** */
 int		find_min(t_list *stack_a);
-void 	to_top(t_list **stack_a, int index, int size);
+void	to_top(t_list **stack_a, int index, int size);
 void	sort_3(t_list **stack_a);
 void	sort_4(t_list **stack_a, t_list **stack_b);
 void	sort_5(t_list **stack_a, t_list **stack_b);
+void	radix_prime(t_list **stack_a, t_list **stack_b);
+void	radix_sort(t_list **stack_a, t_list **stack_b);
 /* ************************************************************************** */
 /* swap                                                                     * */
 /* ************************************************************************** */
@@ -84,6 +90,5 @@ void	reverse_rotate(t_list **stack);
 void	rra(t_list **stack_a);
 void	rrb(t_list **stack_b);
 void	rrr(t_list **stack_a, t_list **stack_b);
-
 
 #endif

@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   distance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 16:22:01 by erian             #+#    #+#             */
-/*   Updated: 2024/09/07 21:04:26 by erian            ###   ########.fr       */
+/*   Created: 2024/09/10 10:50:00 by erian             #+#    #+#             */
+/*   Updated: 2024/09/10 12:58:32 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(void)
+static t_list	*get_next_min(t_list **stack_a)
 {
-	ft_printf("%s", "Error\n");
-	exit (1);
-}
+	t_list	*temp;
+	t_list	*min;
 
-void	free_stack(t_list **stack)
-{
-	t_list	*head;
-
-	while (*stack)
+	temp = *stack_a;
+	min = NULL;
+	while (temp)
 	{
-		head = ((*stack)->next);
-		free(*stack);
-		*stack = head;
+		if (temp->distance == -1 && (!min || temp->value < min->value))
+			min = temp;
+		temp = temp->next;
 	}
+	return (min);
 }
 
-void	error_free(t_list **stack)
+void	distance(t_list **stack_a)
 {
-	free_stack(stack);
-	error();
-}
+	t_list	*min_node;
+	int		i;
 
-void	split_free(char **argv_split)
-{
-	while (*argv_split)
-		free(*argv_split);
-	free(argv_split);
+	i = 0;
+	min_node = get_next_min(stack_a);
+	while (min_node != NULL)
+	{
+		min_node->distance = i;
+		i++;
+		min_node = get_next_min(stack_a);
+	}
 }
