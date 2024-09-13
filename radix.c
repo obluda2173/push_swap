@@ -6,7 +6,7 @@
 /*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 17:30:32 by erian             #+#    #+#             */
-/*   Updated: 2024/09/11 17:04:29 by erian            ###   ########.fr       */
+/*   Updated: 2024/09/13 13:31:58 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ static int	get_max_bits(t_list **stack)
 void	radix_sort(t_list **stack_a, t_list **stack_b)
 {
 	int		i;
-	int		digit;
 	int		j;
+	int		digit;
 	int		size;
 	t_list	*tmp;
 
-	size = stack_len(*stack_a);
 	i = 0;
-	tmp = *stack_a;
+	size = stack_len(*stack_a);
 	digit = get_max_bits(stack_a);
+	tmp = *stack_a;
 	while (i < digit)
 	{
 		j = 0;
