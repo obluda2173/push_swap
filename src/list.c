@@ -43,7 +43,6 @@ void	copy_data(t_list **stack, int nbr)
 	{
 		last_node = find_last_node(*stack);
 		last_node->next = new_node;
-		new_node->next = NULL;
 	}
 }
 

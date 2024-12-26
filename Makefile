@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erian <erian@student.42>                   +#+  +:+       +#+         #
+#    By: erian <erian@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/06 16:05:21 by erian             #+#    #+#              #
-#    Updated: 2024/09/11 17:32:23 by erian            ###   ########.fr        #
+#    Updated: 2024/11/26 12:13:50 by erian            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME		= 	push_swap
 
 SRC			= 	
 
-INCL        =	push_swap.h
+SRCSDIR		=	src
+
+INCL        =	include/push_swap.h
 
 OBJS		= 	$(SRC:.c=.o)
 
@@ -24,18 +26,17 @@ RM			= 	rm -f
 
 CFLAGS		= 	-Wall -Wextra -Werror -I $(INCL)
 
-
-SRC += push_swap.c
-SRC += list.c
-SRC += checker.c
-SRC += error_n_free.c
-SRC += swap.c
-SRC += push.c
-SRC += rotate.c
-SRC += reverse_rotate.c
-SRC += little_sort.c
-SRC += distance.c
-SRC += radix.c
+SRC += $(SRCSDIR)/push_swap.c
+SRC += $(SRCSDIR)/list.c
+SRC += $(SRCSDIR)/checker.c
+SRC += $(SRCSDIR)/error_n_free.c
+SRC += $(SRCSDIR)/swap.c
+SRC += $(SRCSDIR)/push.c
+SRC += $(SRCSDIR)/rotate.c
+SRC += $(SRCSDIR)/reverse_rotate.c
+SRC += $(SRCSDIR)/little_sort.c
+SRC += $(SRCSDIR)/distance.c
+SRC += $(SRCSDIR)/radix.c
 
 BLUE		=	\033[0;94m
 RED			=	\033[0;91m

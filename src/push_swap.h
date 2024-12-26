@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erian <erian@student.42>                   +#+  +:+       +#+        */
+/*   By: erian <erian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 11:15:20 by erian             #+#    #+#             */
-/*   Updated: 2024/09/11 18:29:54 by erian            ###   ########.fr       */
+/*   Updated: 2024/12/08 12:28:25 by erian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "./ft_printf/ft_printf.h"
-# include "./ft_printf/Libft/libft.h"
+# include "../ft_printf/ft_printf.h"
+# include "../ft_printf/Libft/libft.h"
 
 typedef struct s_list
 {
@@ -28,9 +28,9 @@ typedef struct s_list
 /* ************************************************************************** */
 int		main(int argc, char **argv);
 void	stack_init(t_list **stack_a, char **argv);
+void	stack_init_split(t_list **stack_a, char **argv);
 void	distribute_sort(t_list **stack_a, t_list **stack_b);
 void	print_stack(t_list *stack);
-void	free_split(char **argv);
 /* ************************************************************************** */
 /* list.c                                                                   * */
 /* ************************************************************************** */
@@ -42,7 +42,9 @@ int		stack_len(t_list *stack);
 /* ************************************************************************** */
 void	error(void);
 void	free_stack(t_list **stack);
+void	free_split(char **argv);
 void	error_free(t_list **stack_a);
+void	error_free_split(t_list **stack, char **argv);
 /* ************************************************************************** */
 /* checker.c                                                                * */
 /* ************************************************************************** */
